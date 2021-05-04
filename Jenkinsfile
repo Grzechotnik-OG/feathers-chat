@@ -2,16 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build & Test') {
             steps {
-                echo 'Building...'
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                sh 'npm test'
+                echo 'Building & testing ...'
+                sh 'docker-compose up'
             }
         }
     }
