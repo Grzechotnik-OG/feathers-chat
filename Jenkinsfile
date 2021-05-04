@@ -12,14 +12,12 @@ pipeline {
     post {
         success {
             emailext subject: 'Pipeline ${env.JOB_NAME} succeded',
-                body: 'Job ${env.JOB_NAME} ${currentBuild.currentResult}, build ${env.BUILD_DISPLAY_NAME}',
-                attachLog: true,
+                body: 'Job ${env.JOB_NAME}',
                 to: 'grzesiekc188@gmail.com'
         }
         failure {
             emailext subject: 'Pipeline ${env.JOB_NAME} failed',
-                body: 'Job ${env.JOB_NAME} ${currentBuild.currentResult}, build ${env.BUILD_DISPLAY_NAME}',
-                attachLog: true,
+                body: 'Job ${env.JOB_NAME}',
                 to: 'grzesiekc188@gmail.com'
         }
     }
