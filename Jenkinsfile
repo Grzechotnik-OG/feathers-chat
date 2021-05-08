@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building ...'
-                sh 'docker build -t build-agent . -f Dockerfile_Build'
+                sh 'exit 1'
             }
             post {
                 success {
