@@ -20,7 +20,7 @@ Other chat frontends can be found at:
 
 > __Important:__ This project requires NodeJS 10 or later.
 
-## Getting Started
+## Getting Started 
 
 Getting up and running is as easy as 1, 2, 3.
 
