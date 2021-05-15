@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+  
     stages {
         stage('Build') {
             steps {
@@ -35,6 +35,24 @@ pipeline {
                 failure {
                     emailext attachLog: true,
                         subject: "Pipeline ${env.JOB_NAME} tests failed",
+                        body: "Job ${env.JOB_NAME} ${currentBuild.currentResult}: build ${env.BUILD_DISPLAY_NAME}",
+                        to: 'grzesiekc188@gmail.com'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying ...'
+            }
+            post {
+                success {
+                    emailext subject: "Pipeline ${env.JOB_NAME} deploy succeded",
+                        body: "Job ${env.JOB_NAME} ${currentBuild.currentResult}: build ${env.BUILD_DISPLAY_NAME}",
+                        to: 'grzesiekc188@gmail.com'
+                }
+                failure {
+                    emailext attachLog: true,
+                        subject: "Pipeline ${env.JOB_NAME} deploy failed",
                         body: "Job ${env.JOB_NAME} ${currentBuild.currentResult}: build ${env.BUILD_DISPLAY_NAME}",
                         to: 'grzesiekc188@gmail.com'
                 }
