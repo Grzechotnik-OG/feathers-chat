@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building ...'
-                sh 'docker build -t build-agent . -f Dockerfile_Build'
+                sh 'docker build -t build-agent -f Dockerfile_Build .'
             }
             post {
                 success {
@@ -24,7 +24,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing ...'
-                sh 'docker build -t test-agent . -f Dockerfile_Test'
+                sh 'docker build -t test-agent -f Dockerfile_Test .'
             }
             post {
                 success {
@@ -43,6 +43,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying ...'
+                sh 'docker build -t featherschat_deploy -f Dockerfile_Deploy .'
             }
             post {
                 success {
